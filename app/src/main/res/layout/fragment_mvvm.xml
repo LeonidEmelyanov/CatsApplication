@@ -3,11 +3,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="ru.demo.catapplication.viewmodel.HomeViewModel"/>
+
     </data>
 
     <android.support.v7.widget.RecyclerView
-        items="@{viewModel.customerTypes}"
-        viewTypes="@{viewModel.viewTypes}"
+        items="@{viewModel.cats}"
+        viewTypes="@{viewModel.catTypes}"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
