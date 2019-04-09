@@ -16,7 +16,7 @@ public class CatsInteractor {
             return Arrays.asList(
                     new CatModel(CatType.PUSHEEN,
                             "Pusheen",
-                            "This is Pusheen, very popular cat in the world!"),
+                            "This is Pusheen, most popular cat in the world!"),
                     new CatModel(CatType.UNICORN,
                             "Unicorn",
                             "This is mythical animal with rainbow hear, flying in the wind..."),
