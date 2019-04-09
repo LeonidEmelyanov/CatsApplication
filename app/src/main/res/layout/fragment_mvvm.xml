@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,14 +12,23 @@
 
     </data>
 
-    <android.support.v7.widget.RecyclerView
-        items="@{viewModel.cats}"
-        viewTypes="@{viewModel.catTypes}"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:context=".view.MvvmFragment"/>
+        app:onRefreshListener="@{() -> viewModel.loadingCats()}"
+        app:refreshing="@{viewModel.loading}">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="4dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            app:items="@{viewModel.cats}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:viewTypes="@{viewModel.catTypes}"
+            tools:context=".view.MvvmFragment"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </layout>

@@ -30,9 +30,13 @@ public class ClassicFragment extends HomeFragment {
 
         BaseViewModelsAdapter adapter = new BaseViewModelsAdapter(mViewModel.getCatTypes());
 
-        view.<RecyclerView>findViewById(R.id.recycle_view).setAdapter(adapter);
+        view.<RecyclerView>findViewById(R.id.recycle_view)
+                .setAdapter(adapter);
+        view.<SwipeRefreshLayout>findViewById(R.id.swipe_refresh_layout)
+                .setOnRefreshListener(() -> mViewModel.loadingCats());
 
-        mViewModel.getCats().observe(this, cats -> adapter.submitList(cats));
+        mViewModel.getCats().observe(this, cats ->
+                adapter.submitList(cats));
 
         mViewModel.getLoading().observe(this, loading ->
                 view.<SwipeRefreshLayout>findViewById(R.id.swipe_refresh_layout)

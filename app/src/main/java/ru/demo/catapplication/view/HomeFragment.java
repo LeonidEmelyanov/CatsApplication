@@ -24,20 +24,20 @@ public class HomeFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        CatComponent component = ((CatApp) context).getCatComponent();
+        CatComponent component = ((CatApp) context.getApplicationContext()).getCatComponent();
         mViewModel = ViewModelProviders.of(this, component.getHomeProvideFactory()).get(HomeViewModel.class);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mViewModel.catClickListener().observe(this, cat -> {
+        mViewModel.catClickEvent().observe(this, cat -> {
             if (cat != null) {
-                Snackbar.make(view, cat.getName() + " clicked!", Snackbar.LENGTH_SHORT);
+                Snackbar.make(view, cat.getName() + " clicked!", Snackbar.LENGTH_SHORT).show();
             }
         });
         mViewModel.getError().observe(this, error -> {
             if (error != null) {
-                Snackbar.make(view, error, Snackbar.LENGTH_SHORT);
+                Snackbar.make(view, error, Snackbar.LENGTH_SHORT).show();
             }
         });
     }

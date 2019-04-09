@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import com.android.databinding.library.baseAdapters.BR;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -33,7 +34,7 @@ public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mError = new MutableLiveData<>();
 
-    private final SingleLiveEvent<CatModel> mCatClickListener = new SingleLiveEvent<>();
+    private final SingleLiveEvent<CatModel> mCatClickEvent = new SingleLiveEvent<>();
 
     private final IRxSchedulers mRxSchedulers;
     private final CatsInteractor mCatsInteractor;
@@ -67,14 +68,18 @@ public class HomeViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<CatModel> catClickListener() {
-        return mCatClickListener;
+    public LiveData<CatModel> catClickEvent() {
+        return mCatClickEvent;
     }
 
-    private void loadingCats() {
+    public void loadingCats() {
+        mCats.setValue(Collections.emptyList());
+        mLoading.setValue(true);
+
         mDisposable.add(
                 mCatsInteractor.getCats()
                         .subscribeOn(mRxSchedulers.getIOScheduler())
+                        .doFinally(() -> mLoading.postValue(false))
                         .subscribe(
                                 cats -> mCats.postValue(getCatViewModels(cats)),
                                 error -> mError.postValue(error.getMessage()))
@@ -87,13 +92,13 @@ public class HomeViewModel extends ViewModel {
         for (CatModel cat : catModels) {
             switch (cat.getType()) {
                 case PUSHEEN:
-                    cats.add(new PusheenViewModel(cat));
+                    cats.add(new PusheenViewModel(cat, mCatClickEvent));
                     break;
                 case UNICORN:
-                    cats.add(new UnicorViewModel(cat));
+                    cats.add(new UnicorViewModel(cat, mCatClickEvent));
                     break;
                 case PIXELS:
-                    cats.add(new PixelCatViewModel(cat));
+                    cats.add(new PixelCatViewModel(cat, mCatClickEvent));
                     break;
             }
         }

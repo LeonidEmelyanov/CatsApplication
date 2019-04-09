@@ -10,15 +10,19 @@ import ru.demo.catapplication.data.CatType;
 public class CatsInteractor {
 
     public Single<List<CatModel>> getCats() {
-        return Single.just(Arrays.asList(
-                new CatModel(CatType.PUSHEEN,
-                        "Pusheen",
-                        "This is Pusheen, very popular cat in the world!"),
-                new CatModel(CatType.UNICORN,
-                        "Unicorn",
-                        "This is mythical animal with rainbow hear, flying in the wind..."),
-                new CatModel(CatType.PIXELS,
-                        "8-bit Cat",
-                        "Rare cat from the history. The origin is lost in the ages.")));
+        return Single.fromCallable(() -> {
+            Thread.sleep(1000);
+
+            return Arrays.asList(
+                    new CatModel(CatType.PUSHEEN,
+                            "Pusheen",
+                            "This is Pusheen, very popular cat in the world!"),
+                    new CatModel(CatType.UNICORN,
+                            "Unicorn",
+                            "This is mythical animal with rainbow hear, flying in the wind..."),
+                    new CatModel(CatType.PIXELS,
+                            "8-bit Cat",
+                            "Rare cat from the history. The origin is lost in the ages."));
+        });
     }
 }
