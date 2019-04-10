@@ -3,5 +3,6 @@ package ru.demo.catapplication.data;
 public enum CatType {
     PUSHEEN,
     UNICORN,
-    PIXELS
+    PIXELS,
+    FIRE_ASS
 }

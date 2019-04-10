@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
+import com.cunoraz.gifview.library.GifView;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -21,5 +23,14 @@ public final class ListBindingAdapters {
             recyclerView.setAdapter(adapter = new BaseViewModelsAdapter(viewTypes));
         }
         adapter.submitList(items != null ? items : Collections.emptyList());
+    }
+
+    @BindingAdapter("gif")
+    public static void playGif(@NonNull GifView gifView,
+                               @Nullable Integer gif) {
+        if (gif != null) {
+            gifView.setGifResource(gif);
+            gifView.play();
+        }
     }
 }

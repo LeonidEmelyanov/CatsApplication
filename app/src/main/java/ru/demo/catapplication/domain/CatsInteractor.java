@@ -22,7 +22,10 @@ public class CatsInteractor {
                             "This is mythical animal with rainbow hear, flying in the wind..."),
                     new CatModel(CatType.PIXELS,
                             "8-bit Cat",
-                            "Rare cat from the history. The origin is lost in the ages."));
+                            "Rare cat from the history. The origin is lost in the ages."),
+                    new CatModel(CatType.FIRE_ASS,
+                            "Fire Ass Cat",
+                            "Fire!!!"));
         });
     }
 }
