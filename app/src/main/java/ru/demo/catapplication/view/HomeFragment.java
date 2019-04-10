@@ -16,10 +16,6 @@ import ru.demo.catapplication.viewmodel.HomeViewModel;
 public class HomeFragment extends Fragment {
     HomeViewModel mViewModel;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
