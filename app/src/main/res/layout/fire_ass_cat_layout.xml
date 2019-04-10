@@ -15,12 +15,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp">
 
-        <com.cunoraz.gifview.library.GifView
-            android:layout_gravity="center"
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:gif="@{viewModel.gif}"/>
+            android:layout_height="match_parent"
+            android:onClick="@{() -> viewModel.onClick()}">
+
+            <com.cunoraz.gifview.library.GifView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                app:gif="@{viewModel.gif}"/>
+
+        </FrameLayout>
 
     </android.support.v7.widget.CardView>
 
