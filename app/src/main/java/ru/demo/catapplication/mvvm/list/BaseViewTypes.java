@@ -2,7 +2,7 @@ package ru.demo.catapplication.mvvm.list;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.util.Pair;
+import android.support.v4.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;

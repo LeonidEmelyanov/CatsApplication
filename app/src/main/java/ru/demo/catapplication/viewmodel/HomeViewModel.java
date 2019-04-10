@@ -20,6 +20,8 @@ import ru.demo.catapplication.mvvm.SingleLiveEvent;
 import ru.demo.catapplication.mvvm.list.BaseViewTypes;
 
 public class HomeViewModel extends ViewModel {
+    final SingleLiveEvent<CatModel> mCatClickEvent = new SingleLiveEvent<>();
+
     private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     private final BaseViewTypes mCatTypes =
@@ -33,8 +35,6 @@ public class HomeViewModel extends ViewModel {
     private final MutableLiveData<Boolean> mLoading = new MutableLiveData<>();
 
     private final MutableLiveData<String> mError = new MutableLiveData<>();
-
-    private final SingleLiveEvent<CatModel> mCatClickEvent = new SingleLiveEvent<>();
 
     private final IRxSchedulers mRxSchedulers;
     private final CatsInteractor mCatsInteractor;
