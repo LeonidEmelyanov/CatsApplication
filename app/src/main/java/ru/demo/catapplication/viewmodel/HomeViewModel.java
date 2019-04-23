@@ -27,9 +27,9 @@ public class HomeViewModel extends ViewModel {
     private final BaseViewTypes mCatTypes =
             new BaseViewTypes(BR.viewModel)
                     .add(PusheenViewModel.class, R.layout.pusheen_layout)
-                    .add(UnicorViewModel.class, R.layout.unicorn_layout)
+                    .add(UnicornViewModel.class, R.layout.unicorn_layout)
                     .add(PixelCatViewModel.class, R.layout.pixel_cat_layout)
-                    .add(FireAddCatViewModel.class, R.layout.fire_ass_cat_layout);
+                    .add(FireCatViewModel.class, R.layout.fire_cat_layout);
 
     private final MutableLiveData<List<ViewModel>> mCats = new MutableLiveData<>();
 
@@ -96,13 +96,13 @@ public class HomeViewModel extends ViewModel {
                     cats.add(new PusheenViewModel(cat, mCatClickEvent));
                     break;
                 case UNICORN:
-                    cats.add(new UnicorViewModel(cat, mCatClickEvent));
+                    cats.add(new UnicornViewModel(cat, mCatClickEvent));
                     break;
                 case PIXELS:
                     cats.add(new PixelCatViewModel(cat, mCatClickEvent));
                     break;
-                case FIRE_ASS:
-                    cats.add(new FireAddCatViewModel(cat, mCatClickEvent));
+                case FIRE_CAT:
+                    cats.add(new FireCatViewModel(cat, mCatClickEvent));
                     break;
             }
         }

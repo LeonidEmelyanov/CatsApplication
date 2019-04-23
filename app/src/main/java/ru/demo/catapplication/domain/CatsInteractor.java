@@ -23,8 +23,8 @@ public class CatsInteractor {
                     new CatModel(CatType.PIXELS,
                             "8-bit Cat",
                             "Rare cat from the history. The origin is lost in the ages."),
-                    new CatModel(CatType.FIRE_ASS,
-                            "Fire Ass Cat",
+                    new CatModel(CatType.FIRE_CAT,
+                            "Fire Cat",
                             "Fire!!!"));
         });
     }

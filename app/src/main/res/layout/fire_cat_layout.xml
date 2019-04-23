@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="ru.demo.catapplication.viewmodel.FireAddCatViewModel"/>
+            type="ru.demo.catapplication.viewmodel.FireCatViewModel"/>
     </data>
 
     <android.support.v7.widget.CardView

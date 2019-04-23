@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="ru.demo.catapplication.viewmodel.UnicorViewModel"/>
+            type="ru.demo.catapplication.viewmodel.UnicornViewModel"/>
     </data>
 
     <android.support.v7.widget.CardView

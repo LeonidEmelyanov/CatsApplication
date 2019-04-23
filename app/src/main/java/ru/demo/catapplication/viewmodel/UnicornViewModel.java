@@ -6,10 +6,10 @@ import android.support.annotation.Nullable;
 import ru.demo.catapplication.data.CatModel;
 import ru.demo.catapplication.mvvm.SingleLiveEvent;
 
-public class UnicorViewModel extends BaseCatViewModel {
+public class UnicornViewModel extends BaseCatViewModel {
 
-    public UnicorViewModel(@NonNull CatModel model,
-                           @Nullable SingleLiveEvent<CatModel> clickEvent) {
+    public UnicornViewModel(@NonNull CatModel model,
+                            @Nullable SingleLiveEvent<CatModel> clickEvent) {
         super(model, clickEvent);
     }
 }

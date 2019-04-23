@@ -4,5 +4,5 @@ public enum CatType {
     PUSHEEN,
     UNICORN,
     PIXELS,
-    FIRE_ASS
+    FIRE_CAT
 }

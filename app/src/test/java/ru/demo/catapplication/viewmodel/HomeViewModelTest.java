@@ -68,9 +68,9 @@ public class HomeViewModelTest {
     public void getCatTypes() {
         assertThat(mViewModel.getCatTypes(), is(new BaseViewTypes(BR.viewModel)
                 .add(PusheenViewModel.class, R.layout.pusheen_layout)
-                .add(UnicorViewModel.class, R.layout.unicorn_layout)
+                .add(UnicornViewModel.class, R.layout.unicorn_layout)
                 .add(PixelCatViewModel.class, R.layout.pixel_cat_layout)
-                .add(FireAddCatViewModel.class, R.layout.fire_ass_cat_layout)));
+                .add(FireCatViewModel.class, R.layout.fire_cat_layout)));
     }
 
     @Test

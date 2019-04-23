@@ -28,8 +28,10 @@ public class CatModule {
     }
 
     @Provides
-    static ViewModelProviderFactory<HomeViewModel> provideHomeProviderFactory(@NonNull IRxSchedulers rxSchedulers,
-                                                                              @NonNull CatsInteractor interactor) {
-        return new ViewModelProviderFactory<>(() -> new HomeViewModel(rxSchedulers, interactor));
+    static ViewModelProviderFactory<HomeViewModel>
+    provideHomeProviderFactory(@NonNull IRxSchedulers rxSchedulers,
+                               @NonNull CatsInteractor interactor) {
+        return new ViewModelProviderFactory<>(() ->
+                new HomeViewModel(rxSchedulers, interactor));
     }
 }
