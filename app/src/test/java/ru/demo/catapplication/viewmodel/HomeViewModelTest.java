@@ -75,6 +75,7 @@ public class HomeViewModelTest {
 
     @Test
     public void getCats() {
+        mViewModel.loadingCats();
         verify(mCatsObserver).onChanged(
                 Collections.singletonList(
                         new PusheenViewModel(getModel(), mViewModel.mCatClickEvent)
@@ -84,6 +85,7 @@ public class HomeViewModelTest {
 
     @Test
     public void getLoading() {
+        mViewModel.loadingCats();
         verify(mLoadingObserver).onChanged(false);
     }
 
@@ -98,6 +100,7 @@ public class HomeViewModelTest {
 
     @Test
     public void catClickEvent() {
+        mViewModel.loadingCats();
         ((PusheenViewModel) mViewModel.getCats().getValue().get(0)).onClick();
 
         verify(mClickEventObserver).onChanged(getModel());
