@@ -44,8 +44,6 @@ public class HomeViewModel extends ViewModel {
                          @NonNull CatsInteractor catsInteractor) {
         mRxSchedulers = rxSchedulers;
         mCatsInteractor = catsInteractor;
-
-        loadingCats();
     }
 
     @NonNull

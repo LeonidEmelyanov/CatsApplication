@@ -31,7 +31,8 @@ public class CatModule {
     static ViewModelProviderFactory<HomeViewModel>
     provideHomeProviderFactory(@NonNull IRxSchedulers rxSchedulers,
                                @NonNull CatsInteractor interactor) {
-        return new ViewModelProviderFactory<>(() ->
-                new HomeViewModel(rxSchedulers, interactor));
+        return new ViewModelProviderFactory<>(
+                () -> new HomeViewModel(rxSchedulers, interactor),
+                (vm) -> vm.loadingCats());
     }
 }
