@@ -35,10 +35,10 @@ public class ClassicFragment extends HomeFragment {
         view.<SwipeRefreshLayout>findViewById(R.id.swipe_refresh_layout)
                 .setOnRefreshListener(() -> mViewModel.loadingCats());
 
-        mViewModel.getCats().observe(this, cats ->
+        mViewModel.getCats().observe(getViewLifecycleOwner(), cats ->
                 adapter.submitList(cats));
 
-        mViewModel.getLoading().observe(this, loading ->
+        mViewModel.getLoading().observe(getViewLifecycleOwner(), loading ->
                 view.<SwipeRefreshLayout>findViewById(R.id.swipe_refresh_layout)
                         .setRefreshing(loading != null && loading));
     }

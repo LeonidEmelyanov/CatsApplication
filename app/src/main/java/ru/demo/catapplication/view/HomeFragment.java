@@ -26,12 +26,13 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mViewModel.catClickEvent().observe(this, cat -> {
+        mViewModel.catClickEvent().observe(getViewLifecycleOwner(), cat -> {
             if (cat != null) {
                 Snackbar.make(view, cat.getName() + " clicked!", Snackbar.LENGTH_SHORT).show();
             }
         });
-        mViewModel.getError().observe(this, error -> {
+
+        mViewModel.getError().observe(getViewLifecycleOwner(), error -> {
             if (error != null) {
                 Snackbar.make(view, error, Snackbar.LENGTH_SHORT).show();
             }
