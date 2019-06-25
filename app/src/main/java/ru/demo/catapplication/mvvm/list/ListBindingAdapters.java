@@ -1,5 +1,6 @@
 package ru.demo.catapplication.mvvm.list;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
@@ -20,7 +21,8 @@ public final class ListBindingAdapters {
         BaseViewModelsAdapter adapter = (BaseViewModelsAdapter) recyclerView.getAdapter();
 
         if (adapter == null) {
-            recyclerView.setAdapter(adapter = new BaseViewModelsAdapter(viewTypes));
+            recyclerView.setAdapter(adapter =
+                    new BaseViewModelsAdapter((LifecycleOwner) recyclerView.getContext(), viewTypes));
         }
         adapter.submitList(items != null ? items : Collections.emptyList());
     }

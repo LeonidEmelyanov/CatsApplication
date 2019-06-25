@@ -28,7 +28,7 @@ public class ClassicFragment extends HomeFragment {
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        BaseViewModelsAdapter adapter = new BaseViewModelsAdapter(mViewModel.getCatTypes());
+        BaseViewModelsAdapter adapter = new BaseViewModelsAdapter(getViewLifecycleOwner(), mViewModel.getCatTypes());
 
         view.<RecyclerView>findViewById(R.id.recycle_view)
                 .setAdapter(adapter);
