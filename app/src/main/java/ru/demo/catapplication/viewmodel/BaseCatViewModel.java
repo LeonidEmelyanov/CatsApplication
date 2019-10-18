@@ -1,15 +1,14 @@
 package ru.demo.catapplication.viewmodel;
 
-import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import java.util.Objects;
-
+import ru.demo.catapplication.BR;
 import ru.demo.catapplication.data.CatModel;
 import ru.demo.catapplication.mvvm.SingleLiveEvent;
 
-public class BaseCatViewModel extends ViewModel {
+import java.util.Objects;
+
+public class BaseCatViewModel extends BaseItemViewModel {
     private final CatModel mModel;
     private final SingleLiveEvent<CatModel> mClickEvent;
 
@@ -17,6 +16,11 @@ public class BaseCatViewModel extends ViewModel {
                                @Nullable SingleLiveEvent<CatModel> clickEvent) {
         mModel = model;
         mClickEvent = clickEvent;
+    }
+
+    @Override
+    public int getVariableId() {
+        return BR.viewModel;
     }
 
     public String getName() {

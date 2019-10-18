@@ -4,13 +4,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
-
-import com.android.databinding.library.baseAdapters.BR;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import io.reactivex.disposables.CompositeDisposable;
 import ru.demo.catapplication.R;
 import ru.demo.catapplication.core.IRxSchedulers;
@@ -19,19 +12,23 @@ import ru.demo.catapplication.domain.CatsInteractor;
 import ru.demo.catapplication.mvvm.SingleLiveEvent;
 import ru.demo.catapplication.mvvm.list.BaseViewTypes;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class HomeViewModel extends ViewModel {
     final SingleLiveEvent<CatModel> mCatClickEvent = new SingleLiveEvent<>();
 
     private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     private final BaseViewTypes mCatTypes =
-            new BaseViewTypes(BR.viewModel)
+            new BaseViewTypes()
                     .add(PusheenViewModel.class, R.layout.pusheen_layout)
                     .add(UnicornViewModel.class, R.layout.unicorn_layout)
                     .add(PixelCatViewModel.class, R.layout.pixel_cat_layout)
                     .add(FireCatViewModel.class, R.layout.fire_cat_layout);
 
-    private final MutableLiveData<List<ViewModel>> mCats = new MutableLiveData<>();
+    private final MutableLiveData<List<BaseItemViewModel>> mCats = new MutableLiveData<>();
 
     private final MutableLiveData<Boolean> mLoading = new MutableLiveData<>();
 
@@ -52,7 +49,7 @@ public class HomeViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<List<ViewModel>> getCats() {
+    public LiveData<List<BaseItemViewModel>> getCats() {
         return mCats;
     }
 
@@ -85,8 +82,8 @@ public class HomeViewModel extends ViewModel {
         );
     }
 
-    private List<ViewModel> getCatViewModels(@NonNull List<CatModel> catModels) {
-        List<ViewModel> cats = new ArrayList<>();
+    private List<BaseItemViewModel> getCatViewModels(@NonNull List<CatModel> catModels) {
+        List<BaseItemViewModel> cats = new ArrayList<>();
 
         for (CatModel cat : catModels) {
             switch (cat.getType()) {

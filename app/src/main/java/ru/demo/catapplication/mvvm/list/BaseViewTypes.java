@@ -12,20 +12,11 @@ public class BaseViewTypes {
     private static final int NO_LAYOUT = -1;
     private static final int NO_VIEW_TYPE = -1;
 
-    private final int mViewModelVariableId;
     private final List<Pair<Class<?>, Integer>> mStorage = new ArrayList<>();
-
-    public BaseViewTypes(int viewModelVariableId) {
-        mViewModelVariableId = viewModelVariableId;
-    }
 
     public BaseViewTypes add(@NonNull Class<?> clazz, @LayoutRes int layoutId) {
         mStorage.add(new Pair<>(clazz, layoutId));
         return this;
-    }
-
-    public int getViewModelVariableId() {
-        return mViewModelVariableId;
     }
 
     @LayoutRes
@@ -54,19 +45,17 @@ public class BaseViewTypes {
             return false;
         }
         BaseViewTypes that = (BaseViewTypes) o;
-        return mViewModelVariableId == that.mViewModelVariableId &&
-                Objects.equals(mStorage, that.mStorage);
+        return Objects.equals(mStorage, that.mStorage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mViewModelVariableId, mStorage);
+        return Objects.hash(mStorage);
     }
 
     @Override
     public String toString() {
         return "BaseViewTypes{" +
-                "mViewModelVariableId=" + mViewModelVariableId +
                 ", mStorage=" + mStorage +
                 '}';
     }

@@ -1,7 +1,6 @@
 package ru.demo.catapplication.mvvm.list;
 
 import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.ViewModel;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
@@ -11,8 +10,9 @@ import android.support.v7.util.DiffUtil;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import ru.demo.catapplication.viewmodel.BaseItemViewModel;
 
-public class BaseViewModelsAdapter extends ListAdapter<ViewModel, BaseViewModelHolder> {
+public class BaseViewModelsAdapter extends ListAdapter<BaseItemViewModel, BaseViewModelHolder> {
     private final LifecycleOwner mLifecycleOwner;
     private final BaseViewTypes mViewTypes;
 
@@ -23,7 +23,7 @@ public class BaseViewModelsAdapter extends ListAdapter<ViewModel, BaseViewModelH
 
     public BaseViewModelsAdapter(@NonNull LifecycleOwner lifecycleOwner,
                                  @NonNull BaseViewTypes viewTypes,
-                                 @NonNull DiffUtil.ItemCallback<ViewModel> diffCallback) {
+                                 @NonNull DiffUtil.ItemCallback<BaseItemViewModel> diffCallback) {
         super(diffCallback);
         mLifecycleOwner = lifecycleOwner;
         mViewTypes = viewTypes;
@@ -37,7 +37,7 @@ public class BaseViewModelsAdapter extends ListAdapter<ViewModel, BaseViewModelH
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewModelHolder viewHolder, int position) {
-        viewHolder.setViewModel(mViewTypes.getViewModelVariableId(), getItem(position));
+        viewHolder.setViewModel(getItem(position));
         viewHolder.setLifeCycleOwner(mLifecycleOwner);
         viewHolder.updateBindings();
     }
